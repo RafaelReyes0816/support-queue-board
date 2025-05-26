@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { TicketManager } from '../models/TicketManager';
 import { Ticket, TicketStatus } from '../models/Ticket';
@@ -10,8 +9,10 @@ import {
   Ticket as TicketIcon, 
   Clock, 
   User, 
-  Users 
+  Users,
+  Settings
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   const [ticketManager] = useState(() => new TicketManager());
@@ -111,12 +112,21 @@ const Index = () => {
               <h1 className="text-2xl font-bold text-gray-900">Dashboard de Tickets</h1>
               <p className="text-sm text-gray-600">Gestión con estructuras FIFO, Stack y POO</p>
             </div>
-            <button
-              onClick={() => setShowNewTicketForm(true)}
-              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
-            >
-              Nuevo Ticket
-            </button>
+            <div className="flex gap-4">
+              <Link
+                to="/technician"
+                className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors flex items-center gap-2"
+              >
+                <Settings className="h-4 w-4" />
+                Dashboard Técnico
+              </Link>
+              <button
+                onClick={() => setShowNewTicketForm(true)}
+                className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+              >
+                Nuevo Ticket
+              </button>
+            </div>
           </div>
         </div>
       </div>
